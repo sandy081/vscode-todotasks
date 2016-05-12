@@ -1,7 +1,7 @@
 'use strict';
 
 import { CompletionItemProvider, TextDocument, Position, CancellationToken, CompletionItem, Range } from 'vscode';
-import {TagsProvider} from './TagsProvider'
+import TagsProvider from './TagsProvider'
 
 export default class TodoCompletionItemProvider implements CompletionItemProvider {
     public provideCompletionItems(document: TextDocument, position: Position, token: CancellationToken): Promise<CompletionItem[]> {

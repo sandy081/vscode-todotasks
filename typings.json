@@ -1,0 +1,5 @@
+{
+  "ambientDevDependencies": {
+    "chai": "registry:dt/chai#3.4.0+20160317120654"
+  }
+}
