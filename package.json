@@ -1,0 +1,87 @@
+{
+    "name": "vscode-tasks",
+    "displayName": "vscode-tasks",
+    "description": "A todos extension for Visual Studio Code",
+    "version": "0.0.1",
+    "publisher": "Sandeep Somavarapu",
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onLanguage:todo"
+    ],
+    "main": "./out/src/TodoExtensionMain",
+    "contributes": {
+        "languages": [
+            {
+                "id": "todo",
+                "aliases": [
+                    "Tasks",
+                    "todo"
+                ],
+                "extensions": [
+                    ".todo",
+                    ".tasks",
+                    ".todolist.txt"
+                ],
+                "configuration": "./todo.configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "todo",
+                "scopeName": "text.todo",
+                "path": "./syntaxes/todo.tmLanguage"
+            }
+        ],
+        "commands": [
+            {
+                "command": "task.new",
+                "category": "todo",
+                "title": "New Task"
+            },
+            {
+                "command": "task.cancel",
+                "category": "todo",
+                "title": "Cancel Task"
+            },
+            {
+                "command": "task.complete",
+                "category": "todo",
+                "title": "Complete Task"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "task.new",
+                "key": "Ctrl+Shift+1",
+                "mac": "Cmd+Shift+1",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "task.cancel",
+                "key": "Ctrl+Shift+C",
+                "mac": "Cmd+Shift+C",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "task.complete",
+                "key": "Ctrl+Shift+D",
+                "mac": "Cmd+Shift+D",
+                "when": "editorTextFocus"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+        "compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "devDependencies": {
+        "typescript": "^1.8.5",
+        "vscode": "^0.11.0"
+    }
+}
