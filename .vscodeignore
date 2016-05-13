@@ -7,3 +7,4 @@ resources/**
 **/*.map
 .gitignore
 tsconfig.json
+todotasks-project.tasks

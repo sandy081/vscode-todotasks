@@ -1,4 +1,4 @@
-TodoExtension:
+To Do Tasks Extension:
     Project:
         ✔ @high Show commands or actions in the command pallette @done
         ☐ @medium Click on the pending symbol of a task to complete it

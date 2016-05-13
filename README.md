@@ -1,5 +1,5 @@
-# Todos
-A simple and handy extension for [Visual Studio Code](http://code.visualstudio.com/) to organize your todo lists.
+# To Do Tasks
+A simple and handy extension for [Visual Studio Code](http://code.visualstudio.com/) to organize your to-do tasks.
 
 ![](https://raw.githubusercontent.com/sandy081/vscode-todotasks/master/resources/How%20to%20use%20todos.png)
 
