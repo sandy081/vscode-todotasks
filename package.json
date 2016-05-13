@@ -2,7 +2,7 @@
   "name": "todotasks",
   "displayName": "To Do Tasks",
   "description": "A To Do tasks extension for Visual Studio Code",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "sandy081",
   "engines": {
     "vscode": "^1.0.0"
