@@ -1,8 +1,8 @@
 {
-  "name": "vscode-tasks",
-  "displayName": "vscode-tasks",
-  "description": "A todos extension for Visual Studio Code",
-  "version": "0.0.1",
+  "name": "todotasks",
+  "displayName": "To Do Tasks",
+  "description": "A To Do tasks extension for Visual Studio Code",
+  "version": "0.1.0",
   "publisher": "Sandeep Somavarapu",
   "engines": {
     "vscode": "^1.0.0"
@@ -10,6 +10,23 @@
   "categories": [
     "Other"
   ],
+  "keywords": [
+    "todo", "todos", "tasks" 
+  ],
+  "galleryBanner": {
+      "color": "#f0efe7",
+      "theme": "light"
+  },
+  "icon": "todotasks.PNG",
+  "homepage": "https://github.com/sandy081/vscode-todotasks/blob/master/README.md",
+  "bugs": {
+      "url": "https://github.com/sandy081/vscode-todotasks/issues"
+  },
+  "license": "SEE LICENSE IN LICENSE.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sandy081/vscode-todotasks"
+  },
   "activationEvents": [
     "onLanguage:todo"
   ],
@@ -24,8 +41,7 @@
         ],
         "extensions": [
           ".todo",
-          ".tasks",
-          ".todolist.txt"
+          ".tasks"
         ],
         "configuration": "./todo.configuration.json"
       }
@@ -40,37 +56,35 @@
     "commands": [
       {
         "command": "task.new",
-        "category": "todo",
+        "category": "To Do",
         "title": "New Task"
       },
       {
         "command": "task.cancel",
-        "category": "todo",
+        "category": "To Do",
         "title": "Cancel Task"
       },
       {
         "command": "task.complete",
-        "category": "todo",
+        "category": "To Do",
         "title": "Complete Task"
       }
     ],
     "keybindings": [
       {
         "command": "task.new",
-        "key": "Ctrl+Shift+1",
-        "mac": "Cmd+Shift+1",
+        "key": "Ctrl+1",
+        "mac": "Cmd+1",
         "when": "editorTextFocus"
       },
       {
         "command": "task.cancel",
-        "key": "Ctrl+Shift+C",
-        "mac": "Cmd+Shift+C",
+        "key": "Alt+c",
         "when": "editorTextFocus"
       },
       {
         "command": "task.complete",
-        "key": "Ctrl+Shift+D",
-        "mac": "Cmd+Shift+D",
+        "key": "Alt+d",
         "when": "editorTextFocus"
       }
     ]

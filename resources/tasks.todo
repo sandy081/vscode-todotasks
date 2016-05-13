@@ -1,0 +1,35 @@
+TodoExtension:
+    Project:
+        ✔ @high Show commands or actions in the command pallette @done
+        ☐ @medium Click on the pending symbol of a task to complete it
+        ☐ @medium Ability to multi select and perform actions
+        ☐ @low Separate the pending tasks from completed and cancelled tasks
+        ✘ Do auto correction when the file is refreshed @cancelled
+    Tasks:
+        ✔ @high Make tags case-insensitive @done
+        ☐ @low Due date support 
+        ☐ @low Add a completion date when task is completed
+    Customizations:
+        ☐ @medium Ability to choose colors for tags
+    Content Assist:
+        ✔ Content assist for default tags @done
+        ✔ @high Trigger auto intellisense on '@' symbol @done
+        ☐ @medium Content assit or code snippets for commands or actions
+    Tests:
+        ✔ Learn how to write tests for vs code @done
+        ✔ @high Write unit tests @done
+        ☐ @medium Write scenario based tests 
+    Publishing:
+        ✔ Wirte third party notices file for using open source projects @done
+        ☐ Write README.md for the extension
+        ☐ Clean up the text mate grammar file 
+        ☐ Clean up the package.josn file
+        ☐ Call the extension todos
+        ☐ Get it reviewed from @Martin
+        ☐ Finally Publish !!!!
+    Defects:
+        ☐ @critical Decorations are sticking even after removed. 
+        ☐ @high Ctrl + Enter is not creating a task in the next line
+        ✔ @high Having a tag at the beginning is decorating the task description as a tag @done
+        ☐ @Medium Inserting tags by editor is selecting the inserted text
+        ☐ @Medium Some times creating a task is adding a space before the bullet 

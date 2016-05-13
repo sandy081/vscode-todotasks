@@ -1,0 +1,30 @@
+Projects:
+    ☐ Anything with colon at the end of the line is a project title
+    ☐ You can nest projects inside each other
+    ☐ You can fold projects
+
+Tasks:
+    New Task:
+        ☐ Press Cmd+Shift+1 (Ctrl+Shift+1 on Windows and Linux) to add a new task
+        ☐ You can also use the Command pallette to create a new task by typing todo:New Task
+        ☐ If you are on a new line PlainTasks will create a new task on the current line
+        ☐ If you are on a line with some text pressing new task shortcut will convert it to a task
+        ☐ New tasks are nested as much as the previous task
+    More Actions:
+        ✔ Complete a task by pressing Cmd+Shift+d (Ctrl+Shift+d on Windows and Linux) @done
+        ☐ Re-open a completed task by pressing Cmd+Shift+d (Ctrl+Shift+d on Windows and Linux)
+        ✘ Cancel a task by pressing Cmd+Shift+c (Ctrl+Shift+c on Windows and Linux) @cancelled
+        ☐ Complete a cancelled task by pressing Cmd+Shift+d (Ctrl+Shift+d on Windows and Linux)
+        ☐ You can also use the Command pallette to complete or cancel a task by typing todo:Complete Task or todo:Cancel Task 
+    Tagging:
+        ☐ You can add tags using @ sign, like this @tag
+        ☐ You can use following pre-existing tags to mark tasks @critical @high @low @today 
+        ☐ Auto intellisense is provided to help you in finding tags
+
+☐ More to come...
+
+Installation:
+    ☐ In Visual Studio Code press F1 or Cmd+Shift+p (Ctrl+Shift+p on Windows and Linux) to open command pallette
+    ☐ Type "Install Extensions" and Enter
+    ☐ Search for Tasks extension and Install 
+        
