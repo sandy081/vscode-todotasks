@@ -3,7 +3,7 @@
   "displayName": "To Do Tasks",
   "description": "A To Do tasks extension for Visual Studio Code",
   "version": "0.1.0",
-  "publisher": "Sandeep Somavarapu",
+  "publisher": "sandy081",
   "engines": {
     "vscode": "^1.0.0"
   },
