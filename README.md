@@ -21,7 +21,7 @@ A simple and handy extension for [Visual Studio Code](http://code.visualstudio.c
     New Task:
         * Press Cmd+1 (Ctrl+1 on Windows and Linux) to add a new task
         * You can also use the Command pallette to create a new task by typing To Do:New Task
-        * If you are on a new line PlainTasks will create a new task on the current line
+        * If you are on a new line, it will create a new task on the current line
         * If you are on a line with some text pressing new task shortcut will convert it to a task
         * New tasks are nested as much as the previous task
     
@@ -31,7 +31,7 @@ A simple and handy extension for [Visual Studio Code](http://code.visualstudio.c
         * Cancel a task by pressing Alt+c @cancelled
         * Complete a cancelled task by pressing Alt+d
         * You can also use the Command pallette to complete or cancel a task by typing 
-           To Do:Complete Task or To Do:Cancel Task 
+          To Do:Complete Task or To Do:Cancel Task 
     
     Tagging:
         * You can add tags using @ sign, like this @tag
