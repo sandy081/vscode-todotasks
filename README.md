@@ -38,9 +38,9 @@ A simple and handy extension for [Visual Studio Code](http://code.visualstudio.c
         * You can use following pre-existing tags to mark tasks @critical @high @low @today 
         * Auto intellisense is provided to help you in finding tags
 
-More to come... Check [Tasks](todotasks-project)
+More to come... Check [Tasks](todotasks-project.tasks)
 
 ## License
-[MIT](LICENSE)
+[MIT](LICENSE.md)
 
 
