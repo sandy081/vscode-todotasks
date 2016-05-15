@@ -62,7 +62,12 @@ export class TodoDocumentEditor {
     }
 
     private updateTask(taskLine: TextLine, taskDescription: string, symbol: string, tag?: string) {
-        this._textEditorEdit.replace(new Range(new Position(taskLine.lineNumber, taskLine.firstNonWhitespaceCharacterIndex), taskLine.range.end), symbol + " " + taskDescription + (tag ? (" " + TodoDocument.toTag(tag)) : ""));
+        this._textEditorEdit.delete(new Range(new Position(taskLine.lineNumber, taskLine.firstNonWhitespaceCharacterIndex), taskLine.range.end));
+        this.insertTask(new Position(taskLine.lineNumber, taskLine.firstNonWhitespaceCharacterIndex), symbol + " " + taskDescription + (tag ? (" " + TodoDocument.toTag(tag)) : ""));
+    }
+
+    private insertTask(pos: Position, task: string) {
+        this._textEditorEdit.insert(pos, task);
         new TodoDocumentDecorator(this._textEditor).performDecoration();
     }
 }

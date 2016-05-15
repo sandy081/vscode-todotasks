@@ -31,5 +31,5 @@ To Do Tasks Extension:
         ☐ @critical Decorations are sticking even after removed. 
         ☐ @high Ctrl + Enter is not creating a task in the next line
         ✔ @high Having a tag at the beginning is decorating the task description as a tag @done
-        ☐ @Medium Inserting tags by editor is selecting the inserted text
+        ✔ @Medium Inserting tags by editor is selecting the inserted text @done
         ☐ @Medium Some times creating a task is adding a space before the bullet 
