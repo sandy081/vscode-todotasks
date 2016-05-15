@@ -1,102 +1,104 @@
 {
-  "name": "todotasks",
-  "displayName": "To Do Tasks",
-  "description": "A To Do tasks extension for Visual Studio Code",
-  "version": "0.1.2",
-  "publisher": "sandy081",
-  "engines": {
-    "vscode": "^1.0.0"
-  },
-  "categories": [
-    "Other"
-  ],
-  "keywords": [
-    "todo", "todos", "tasks" 
-  ],
-  "galleryBanner": {
-      "color": "#f0efe7",
-      "theme": "light"
-  },
-  "icon": "todotasks.PNG",
-  "homepage": "https://github.com/sandy081/vscode-todotasks/blob/master/README.md",
-  "bugs": {
-      "url": "https://github.com/sandy081/vscode-todotasks/issues"
-  },
-  "license": "SEE LICENSE IN LICENSE.md",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/sandy081/vscode-todotasks"
-  },
-  "activationEvents": [
-    "onLanguage:todo"
-  ],
-  "main": "./out/src/TodoExtensionMain",
-  "contributes": {
-    "languages": [
-      {
-        "id": "todo",
-        "aliases": [
-          "Tasks",
-          "todo"
+    "name": "todotasks",
+    "displayName": "To Do Tasks",
+    "description": "A To Do tasks extension for Visual Studio Code",
+    "version": "0.1.3",
+    "publisher": "sandy081",
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "keywords": [
+        "todo",
+        "todos",
+        "tasks"
+    ],
+    "galleryBanner": {
+        "color": "#f0efe7",
+        "theme": "light"
+    },
+    "icon": "todotasks.PNG",
+    "homepage": "https://github.com/sandy081/vscode-todotasks/blob/master/README.md",
+    "bugs": {
+        "url": "https://github.com/sandy081/vscode-todotasks/issues"
+    },
+    "license": "SEE LICENSE IN LICENSE.md",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sandy081/vscode-todotasks"
+    },
+    "activationEvents": [
+        "onLanguage:todo"
+    ],
+    "main": "./out/src/TodoExtensionMain",
+    "contributes": {
+        "languages": [
+            {
+                "id": "todo",
+                "aliases": [
+                    "Tasks",
+                    "todo"
+                ],
+                "extensions": [
+                    ".todo",
+                    ".tasks"
+                ],
+                "configuration": "./todo.configuration.json"
+            }
         ],
-        "extensions": [
-          ".todo",
-          ".tasks"
+        "grammars": [
+            {
+                "language": "todo",
+                "scopeName": "text.todo",
+                "path": "./syntaxes/todo.tmLanguage"
+            }
         ],
-        "configuration": "./todo.configuration.json"
-      }
-    ],
-    "grammars": [
-      {
-        "language": "todo",
-        "scopeName": "text.todo",
-        "path": "./syntaxes/todo.tmLanguage"
-      }
-    ],
-    "commands": [
-      {
-        "command": "task.new",
-        "category": "To Do",
-        "title": "New Task"
-      },
-      {
-        "command": "task.cancel",
-        "category": "To Do",
-        "title": "Cancel Task"
-      },
-      {
-        "command": "task.complete",
-        "category": "To Do",
-        "title": "Complete Task"
-      }
-    ],
-    "keybindings": [
-      {
-        "command": "task.new",
-        "key": "Ctrl+1",
-        "mac": "Cmd+1",
-        "when": "editorTextFocus"
-      },
-      {
-        "command": "task.cancel",
-        "key": "Alt+c",
-        "when": "editorTextFocus"
-      },
-      {
-        "command": "task.complete",
-        "key": "Alt+d",
-        "when": "editorTextFocus"
-      }
-    ]
-  },
-  "scripts": {
-    "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
-    "compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
-    "postinstall": "node ./node_modules/vscode/bin/install"
-  },
-  "devDependencies": {
-    "chai": "^3.5.0",
-    "typescript": "^1.8.5",
-    "vscode": "^0.11.0"
-  }
+        "commands": [
+            {
+                "command": "task.new",
+                "category": "To Do",
+                "title": "New Task"
+            },
+            {
+                "command": "task.cancel",
+                "category": "To Do",
+                "title": "Cancel Task"
+            },
+            {
+                "command": "task.complete",
+                "category": "To Do",
+                "title": "Complete Task"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "task.new",
+                "key": "Ctrl+1",
+                "mac": "Cmd+1",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "task.cancel",
+                "key": "Alt+c",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "task.complete",
+                "key": "Alt+d",
+                "when": "editorTextFocus"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+        "compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "devDependencies": {
+        "chai": "^3.5.0",
+        "typescript": "^1.8.5",
+        "vscode": "^0.11.0"
+    }
 }
