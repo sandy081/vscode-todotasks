@@ -1,7 +1,7 @@
 # To Do Tasks
 A simple and handy extension for [Visual Studio Code](http://code.visualstudio.com/) to organize your to-do tasks.
 
-![](https://raw.githubusercontent.com/sandy081/vscode-todotasks/master/resources/How%20to%20use%20todos.PNG)
+![](https://raw.githubusercontent.com/sandy081/vscode-todotasks/master/resources/How%20to%20use%20todos.png)
 
 ## Install in TWO steps
 * In VSCode press F1 or Cmd+Shift+p (Ctrl+Shift+p on Windows and Linux) to open command pallette
@@ -14,12 +14,12 @@ A simple and handy extension for [Visual Studio Code](http://code.visualstudio.c
 
     * Anything with colon at the end of the line is a project title
     * You can nest projects inside each other
-    * You can fold projects
+    * You can fold projects and sub projects
 
 ###Tasks:
     
     New Task:
-        * Press Cmd+1 (Ctrl+1 on Windows and Linux) to add a new task
+        * Press Cmd+Enter (Ctrl+Enter on Windows and Linux) to add a new task
         * You can also use the Command pallette to create a new task by typing To Do:New Task
         * If you are on a new line, it will create a new task on the current line
         * If you are on a line with some text pressing new task shortcut will convert it to a task

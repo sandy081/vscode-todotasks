@@ -1,11 +1,13 @@
 Projects:
     ☐ Anything with colon at the end of the line is a project title
     ☐ You can nest projects inside each other
-    ☐ You can fold projects
-
+    ☐ You can fold projects and sub projects
+    Folding and Indentation:
+        ☐ Demo folidng
+        
 Tasks:
     New Task:
-        ☐ Press Cmd+1 (Ctrl+1 on Windows and Linux) to add a new task
+        ☐ Press Cmd+Enter (Ctrl+Enter on Windows and Linux) to add a new task
         ☐ You can also use the Command pallette to create a new task by typing To Do:New Task
         ☐ If you are on a new line, it will create a new task on the current line
         ☐ If you are on a line with some text pressing new task shortcut will convert it to a task
