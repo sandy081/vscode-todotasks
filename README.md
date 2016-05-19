@@ -9,6 +9,9 @@ A simple and handy extension for [Visual Studio Code](http://code.visualstudio.c
 
 ## How to use
 
+Create a new file and save with todo or tasks file extension.
+
+**NOTE:** Commands listed below are triggerred only on files with above extensions.
 
 ###Projects:
 
