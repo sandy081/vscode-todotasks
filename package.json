@@ -30,7 +30,10 @@
         "url": "https://github.com/sandy081/vscode-todotasks"
     },
     "activationEvents": [
-        "onLanguage:todo"
+        "onLanguage:todo",
+        "onCommand:task.new",
+        "onCommand:task.cancel",
+        "onCommand:task.complete"
     ],
     "main": "./out/src/TodoExtensionMain",
     "contributes": {

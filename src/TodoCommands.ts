@@ -1,6 +1,6 @@
 'use strict';
 
-import { commands, TextEditor, TextEditorEdit, CompletionItem, TextEdit} from 'vscode';
+import { commands, TextEditor, TextEditorEdit, CompletionItem, TextEdit, window} from 'vscode';
 import { TodoDocument } from './TodoDocument';
 import { TodoDocumentEditor } from './TodoDocumentEditor';
 
@@ -12,20 +12,30 @@ export class TodoCommands {
 
     public registerNewTaskCommand() {
         return commands.registerTextEditorCommand(TodoCommands.NEW_TASK, (textEditor: TextEditor, edit: TextEditorEdit) => {
-            new TodoDocumentEditor(textEditor, edit).createNewTask();
+            if (this.isSupportedLanguage(textEditor)) {
+                new TodoDocumentEditor(textEditor, edit).createNewTask();
+            }
         });
     }
 
     public registerCompleteTaskCommand() {
         return commands.registerTextEditorCommand(TodoCommands.COMPLETE_TASK, (textEditor: TextEditor, edit: TextEditorEdit) => {
-            new TodoDocumentEditor(textEditor, edit).completeCurrentTask();
+            if (this.isSupportedLanguage(textEditor)) {
+                new TodoDocumentEditor(textEditor, edit).completeCurrentTask();
+            }
         });
     }
 
     public registerCancelTaskCommand() {
         return commands.registerTextEditorCommand(TodoCommands.CANCEL_TASK, (textEditor: TextEditor, edit: TextEditorEdit) => {
-            new TodoDocumentEditor(textEditor, edit).cancelCurrentTask();
+            if (this.isSupportedLanguage(textEditor)) {
+                new TodoDocumentEditor(textEditor, edit).cancelCurrentTask();
+            }
         });
+    }
+
+    private isSupportedLanguage(textEditor: TextEditor):boolean {
+        return "todo" === textEditor.document.languageId;
     }
 }
 
