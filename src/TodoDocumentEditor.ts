@@ -3,10 +3,7 @@
 import { commands, TextEditor, TextEditorEdit, Range, Position, TextLine, TextDocumentChangeEvent } from 'vscode';
 import {TodoDocument} from './TodoDocument';
 import TodoDocumentDecorator from './TodoDocumentDecorator';
-import * as moment from 'moment';
-
 export class TodoDocumentEditor {
-    let format: string = 'MMMM Do YYYY, H:mm';
     constructor(private _textEditor: TextEditor, private _textEditorEdit: TextEditorEdit) {
     }
 
@@ -63,8 +60,9 @@ export class TodoDocumentEditor {
     }
 
     private updateTask(taskLine: TextLine, taskDescription: string, symbol: string, tag?: string) {
+        var timestamp = new Date(); 
         this._textEditorEdit.delete(new Range(new Position(taskLine.lineNumber, taskLine.firstNonWhitespaceCharacterIndex), taskLine.range.end));
-        this.insertTask(new Position(taskLine.lineNumber, taskLine.firstNonWhitespaceCharacterIndex), symbol + " " + taskDescription + (tag ? (" " + TodoDocument.toTag(tag))+' (' + moment().format(format) + ')' + : ""));
+        this.insertTask(new Position(taskLine.lineNumber, taskLine.firstNonWhitespaceCharacterIndex), symbol + " " + taskDescription + (tag ? (" " + TodoDocument.toTag(tag)+' (' + timestamp.toLocaleString() + ')'): ""));
     }
 
     private insertTask(pos: Position, task: string) {
