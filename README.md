@@ -13,13 +13,13 @@ Create a new file and save with todo or tasks file extension.
 
 **NOTE:** Commands listed below are triggerred only on files with above extensions.
 
-###Projects:
+### Projects:
 
     * Anything with colon at the end of the line is a project title
     * You can nest projects inside each other
     * You can fold projects and sub projects
 
-###Tasks:
+### Tasks:
     
     New Task:
         * Press Cmd+Enter (Ctrl+Enter on Windows and Linux) to add a new task
