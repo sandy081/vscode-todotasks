@@ -80,7 +80,7 @@
                 "command": "task.new",
                 "key": "Ctrl+Enter",
                 "mac": "Cmd+Enter",
-                "when": "editorTextFocus && editorLangId == todo
+                "when": "editorTextFocus && editorLangId == todo"
             },
             {
                 "command": "task.cancel",
