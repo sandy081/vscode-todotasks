@@ -55,6 +55,7 @@ export class TodoDocumentEditor {
             return;
         }
         if (task.isCancelled()) {
+            this.updateTask(task.taskLine, task.getDescription(), TodoConfiguration.SYMBOL_NEW_TASK);
             return;
         }
 
