@@ -28,10 +28,16 @@ export class TodoDocument {
         return null;
     }
 
+    escapeRegExp(text) {
+        return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+    }
+
     public getTasks(): Task[] {
         let result: Task[]= [];
         var text= this._textDocument.getText();
-        var regEx= /^\s*[☐|✘|✔]/gm;
+        var regEx= new RegExp("^\\s*[" + this.escapeRegExp(TodoConfiguration.SYMBOL_NEW_TASK) + "|" + 
+        this.escapeRegExp(TodoConfiguration.SYMBOL_CANCEL_TASK) + "|" + this.escapeRegExp(TodoConfiguration.SYMBOL_DONE_TASK) + "]", "gm");
+
         var match;
         while (match = regEx.exec(text)) {
             let line= this._textDocument.lineAt(this._textDocument.positionAt(match.index + 1).line);
