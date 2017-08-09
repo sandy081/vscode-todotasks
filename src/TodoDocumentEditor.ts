@@ -3,6 +3,8 @@
 import { commands, TextEditor, TextEditorEdit, Range, Position, TextLine, TextDocumentChangeEvent, workspace } from 'vscode';
 import {TodoDocument} from './TodoDocument';
 import TodoDocumentDecorator from './TodoDocumentDecorator';
+import {TodoConfiguration} from './TodoConfiguration';
+
 export class TodoDocumentEditor {
     constructor(private _textEditor: TextEditor, private _textEditorEdit: TextEditorEdit) {
     }
@@ -18,7 +20,7 @@ export class TodoDocumentEditor {
 
         let taskLine= this._textEditor.document.lineAt(this._textEditor.selection.active);
         let taskDescription= taskLine.text.trim();
-        this.updateTask(taskLine, taskDescription, TodoDocument.SYMBOL_NEW_TASK);
+        this.updateTask(taskLine, taskDescription, TodoConfiguration.SYMBOL_NEW_TASK);
     }
 
     public completeCurrentTask() {
@@ -31,11 +33,11 @@ export class TodoDocumentEditor {
         }
 
         if (task.isDone()) {
-            this.updateTask(task.taskLine, task.getDescription(), TodoDocument.SYMBOL_NEW_TASK);
+            this.updateTask(task.taskLine, task.getDescription(), TodoConfiguration.SYMBOL_NEW_TASK);
             return;
         }
 
-        this.updateTask(task.taskLine, task.getDescription(), TodoDocument.SYMBOL_DONE_TASK, TodoDocument.ACTION_DONE);
+        this.updateTask(task.taskLine, task.getDescription(), TodoConfiguration.SYMBOL_DONE_TASK, TodoDocument.ACTION_DONE);
     }
 
     public cancelCurrentTask() {
@@ -56,7 +58,7 @@ export class TodoDocumentEditor {
             return;
         }
 
-        this.updateTask(task.taskLine, task.getDescription(), TodoDocument.SYMBOL_CANCEL_TASK, TodoDocument.ACTION_CANCELLED);
+        this.updateTask(task.taskLine, task.getDescription(), TodoConfiguration.SYMBOL_CANCEL_TASK, TodoDocument.ACTION_CANCELLED);
     }
 
     private updateTask(taskLine: TextLine, taskDescription: string, symbol: string, tag?: string) {

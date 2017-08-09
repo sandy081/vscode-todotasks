@@ -2,6 +2,7 @@
 
 import { window, TextEditor, Range, Position, TextLine, TextDocumentChangeEvent, TextEditorDecorationType } from 'vscode';
 import {TodoDocument, Task} from './TodoDocument';
+import {TodoConfiguration} from './TodoConfiguration';
 
 export default class TodoDocumentEditor {
 
@@ -103,7 +104,7 @@ class DoneTasksDecorator extends LineDecorator {
 	}
 
 	private getDoneSymbolRange(doneTask: Task): Range {
-		return super.getRange(TodoDocument.SYMBOL_DONE_TASK, doneTask.taskLine);
+		return super.getRange(TodoConfiguration.SYMBOL_DONE_TASK, doneTask.taskLine);
 	}
 
 	private getDoneActionRange(doneTask: Task): Range {
@@ -159,7 +160,7 @@ class CancelTasksDecorator extends LineDecorator {
 	}
 
 	private getCancelSymbolRange(doneTask: Task): Range {
-		return super.getRange(TodoDocument.SYMBOL_CANCEL_TASK, doneTask.taskLine);
+		return super.getRange(TodoConfiguration.SYMBOL_CANCEL_TASK, doneTask.taskLine);
 	}
 
 	private getCancelActionRange(doneTask: Task): Range {

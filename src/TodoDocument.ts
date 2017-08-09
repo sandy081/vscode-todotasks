@@ -1,13 +1,11 @@
 'use strict';
 
-import {TextDocument, TextLine, Position, CompletionItem, Range} from 'vscode';
+import {TodoConfiguration} from './TodoConfiguration'
+import {TextDocument, TextLine, Position, CompletionItem, Range, workspace} from 'vscode';
 
 export class TodoDocument {
     
     public static SYMBOL_PROJECT= ":";
-    public static SYMBOL_NEW_TASK= "☐";
-    public static SYMBOL_DONE_TASK= "✔";
-    public static SYMBOL_CANCEL_TASK= "✘";
     public static SYMBOL_TAG= "@";
 
     public static TAG_CRITICAL= "critical";
@@ -53,9 +51,9 @@ export class TodoDocument {
 
     public isTask(pos: Position): boolean {
         let task= this._textDocument.lineAt(pos.line).text.trim();
-        return task.startsWith(TodoDocument.SYMBOL_NEW_TASK) 
-                    || task.startsWith(TodoDocument.SYMBOL_CANCEL_TASK)
-                    || task.startsWith(TodoDocument.SYMBOL_DONE_TASK);
+        return task.startsWith(TodoConfiguration.SYMBOL_NEW_TASK) 
+                    || task.startsWith(TodoConfiguration.SYMBOL_CANCEL_TASK)
+                    || task.startsWith(TodoConfiguration.SYMBOL_DONE_TASK);
     }
 
     public static toTag(tagName: string): string {
@@ -74,15 +72,15 @@ export class Task {
     public getDescription(): string {
         if (this.isDone()) {
             let index= this.taskText.indexOf(TodoDocument.toTag(TodoDocument.ACTION_DONE));
-            return index !== -1 ? this.taskText.substring(TodoDocument.SYMBOL_DONE_TASK.length, index).trim()
-                                       : this.taskText.substring(TodoDocument.SYMBOL_DONE_TASK.length).trim();
+            return index !== -1 ? this.taskText.substring(TodoConfiguration.SYMBOL_DONE_TASK.length, index).trim()
+                                       : this.taskText.substring(TodoConfiguration.SYMBOL_DONE_TASK.length).trim();
         }
         if (this.isCancelled()) {
             var index= this.taskText.indexOf(TodoDocument.toTag(TodoDocument.ACTION_CANCELLED));
-            return index !== -1 ? this.taskText.substring(TodoDocument.SYMBOL_CANCEL_TASK.length, index).trim()
-                                       : this.taskText.substring(TodoDocument.SYMBOL_CANCEL_TASK.length).trim();
+            return index !== -1 ? this.taskText.substring(TodoConfiguration.SYMBOL_CANCEL_TASK.length, index).trim()
+                                       : this.taskText.substring(TodoConfiguration.SYMBOL_CANCEL_TASK.length).trim();
         }
-        return this.taskText.substring(TodoDocument.SYMBOL_NEW_TASK.length).trim();
+        return this.taskText.substring(TodoConfiguration.SYMBOL_NEW_TASK.length).trim();
     }
 
     public isEmpty(): boolean {
@@ -90,11 +88,11 @@ export class Task {
     }
 
     public isDone(): boolean {
-        return this.taskText.indexOf(TodoDocument.SYMBOL_DONE_TASK) !== -1;
+        return this.taskText.indexOf(TodoConfiguration.SYMBOL_DONE_TASK) !== -1;
     }
 
     public isCancelled(): boolean {
-        return this.taskText.indexOf(TodoDocument.SYMBOL_CANCEL_TASK) !== -1;
+        return this.taskText.indexOf(TodoConfiguration.SYMBOL_CANCEL_TASK) !== -1;
     }
 
     public hasTag(tag: string): boolean {
