@@ -9,9 +9,9 @@ export class TodoConfiguration {
 
     public updateConfig()
     {
-        TodoConfiguration.SYMBOL_NEW_TASK = workspace.getConfiguration('todotasks').get('newTaskSymbol');
-        TodoConfiguration.SYMBOL_DONE_TASK = workspace.getConfiguration('todotasks').get('doneTaskSymbol');
-        TodoConfiguration.SYMBOL_CANCEL_TASK = workspace.getConfiguration('todotasks').get('cancelTaskSymbol');
+        TodoConfiguration.SYMBOL_NEW_TASK = <string> workspace.getConfiguration('todotasks').get('newTaskSymbol');
+        TodoConfiguration.SYMBOL_DONE_TASK = <string> workspace.getConfiguration('todotasks').get('doneTaskSymbol');
+        TodoConfiguration.SYMBOL_CANCEL_TASK = <string> workspace.getConfiguration('todotasks').get('cancelTaskSymbol');
     }
 
 }
