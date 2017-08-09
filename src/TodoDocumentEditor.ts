@@ -65,7 +65,7 @@ export class TodoDocumentEditor {
         var timestamp = new Date(); 
         this._textEditorEdit.delete(new Range(new Position(taskLine.lineNumber, taskLine.firstNonWhitespaceCharacterIndex), taskLine.range.end));
 
-        var showDate = workspace.getConfiguration('todotasks').get('showDateOnDone')[0] === true;
+        var showDate = workspace.getConfiguration('todotasks').get('showDateOnDone') === true;
 
         var tagText = " " + TodoDocument.toTag(tag)+ (showDate ? (' (' + timestamp.toLocaleString() + ')'): "" );
         var newLine = symbol + " " + taskDescription + (tag ? (tagText): "");
