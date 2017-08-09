@@ -51,6 +51,18 @@
                 "configuration": "./todo.configuration.json"
             }
         ],
+        "configuration": { 
+            "type": "object",
+            "title": "ToDoTasks configuration",
+            "properties": {
+                "todotasks.showDateOnDone": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Appends the date to the end of a todo once marked as done"
+                }
+            }
+        },
+
         "grammars": [
             {
                 "language": "todo",

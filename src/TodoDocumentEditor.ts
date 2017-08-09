@@ -1,6 +1,6 @@
 'use strict';
 
-import { commands, TextEditor, TextEditorEdit, Range, Position, TextLine, TextDocumentChangeEvent } from 'vscode';
+import { commands, TextEditor, TextEditorEdit, Range, Position, TextLine, TextDocumentChangeEvent, workspace } from 'vscode';
 import {TodoDocument} from './TodoDocument';
 import TodoDocumentDecorator from './TodoDocumentDecorator';
 export class TodoDocumentEditor {
@@ -62,7 +62,13 @@ export class TodoDocumentEditor {
     private updateTask(taskLine: TextLine, taskDescription: string, symbol: string, tag?: string) {
         var timestamp = new Date(); 
         this._textEditorEdit.delete(new Range(new Position(taskLine.lineNumber, taskLine.firstNonWhitespaceCharacterIndex), taskLine.range.end));
-        this.insertTask(new Position(taskLine.lineNumber, taskLine.firstNonWhitespaceCharacterIndex), symbol + " " + taskDescription + (tag ? (" " + TodoDocument.toTag(tag)+' (' + timestamp.toLocaleString() + ')'): ""));
+
+        var showDate = workspace.getConfiguration('todotasks').get('showDateOnDone')[0] === true;
+
+        var tagText = " " + TodoDocument.toTag(tag)+ (showDate ? (' (' + timestamp.toLocaleString() + ')'): "" );
+        var newLine = symbol + " " + taskDescription + (tag ? (tagText): "");
+        
+        this.insertTask(new Position(taskLine.lineNumber, taskLine.firstNonWhitespaceCharacterIndex), newLine);
     }
 
     private insertTask(pos: Position, task: string) {
