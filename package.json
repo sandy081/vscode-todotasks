@@ -60,6 +60,11 @@
                     "default": true,
                     "description": "Appends the date to the end of a todo once marked as done"
                 },
+                "todotasks.useUTCDate": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Use UTC for the date"
+                },
                 "todotasks.newTaskSymbol": {
                     "type": "string",
                     "default": "☐",

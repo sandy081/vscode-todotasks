@@ -63,12 +63,13 @@ export class TodoDocumentEditor {
     }
 
     private updateTask(taskLine: TextLine, taskDescription: string, symbol: string, tag?: string) {
-        var timestamp = new Date(); 
         this._textEditorEdit.delete(new Range(new Position(taskLine.lineNumber, taskLine.firstNonWhitespaceCharacterIndex), taskLine.range.end));
 
-        var showDate = workspace.getConfiguration('todotasks').get('showDateOnDone') === true;
+        var timestamp = new Date();  
+        var dateOptions = TodoConfiguration.DATE_UTC ? { timeZone: "UTC", timeZoneName: "short" } : {};      
 
-        var tagText = " " + TodoDocument.toTag(tag)+ (showDate ? (' (' + timestamp.toLocaleString() + ')'): "" );
+        var showDate = TodoConfiguration.DATE_SHOW;
+        var tagText = " " + TodoDocument.toTag(tag)+ (showDate ? (' (' + timestamp.toLocaleString(undefined, dateOptions) + ')'): "" );
         var newLine = symbol + " " + taskDescription + (tag ? (tagText): "");
         
         this.insertTask(new Position(taskLine.lineNumber, taskLine.firstNonWhitespaceCharacterIndex), newLine);
