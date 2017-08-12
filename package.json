@@ -51,6 +51,38 @@
                 "configuration": "./todo.configuration.json"
             }
         ],
+        "configuration": { 
+            "type": "object",
+            "title": "ToDoTasks configuration",
+            "properties": {
+                "todotasks.showDateOnDone": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Appends the date to the end of a todo once marked as done"
+                },
+                "todotasks.useUTCDate": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Use UTC for the date"
+                },
+                "todotasks.newTaskSymbol": {
+                    "type": "string",
+                    "default": "☐",
+                    "description": "Changes the symbol to denote a new task"
+                },
+                "todotasks.doneTaskSymbol": {
+                    "type": "string",
+                    "default": "✔",
+                    "description": "Changes the symbol to denote a done task"
+                },
+                "todotasks.cancelTaskSymbol": {
+                    "type": "string",
+                    "default": "✘",
+                    "description": "Changes the symbol to denote a canceled task"
+                } 
+            }
+        },
+
         "grammars": [
             {
                 "language": "todo",
@@ -80,17 +112,17 @@
                 "command": "task.new",
                 "key": "Ctrl+Enter",
                 "mac": "Cmd+Enter",
-                "when": "editorTextFocus"
+                "when": "editorTextFocus && editorLangId == todo"
             },
             {
                 "command": "task.cancel",
                 "key": "Alt+c",
-                "when": "editorTextFocus"
+                "when": "editorTextFocus && editorLangId == todo"
             },
             {
                 "command": "task.complete",
                 "key": "Alt+d",
-                "when": "editorTextFocus"
+                "when": "editorTextFocus && editorLangId == todo"
             }
         ]
     },

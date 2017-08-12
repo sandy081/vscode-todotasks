@@ -2,6 +2,7 @@
 
 import { window, TextEditor, Range, Position, TextLine, TextDocumentChangeEvent, TextEditorDecorationType } from 'vscode';
 import {TodoDocument, Task} from './TodoDocument';
+import {TodoConfiguration} from './TodoConfiguration';
 
 export default class TodoDocumentEditor {
 
@@ -92,7 +93,7 @@ class DoneTasksDecorator extends LineDecorator {
 		var tagsRanges:Range[]= []
 		tasks.forEach((task:Task) => {
 			if (task.isDone()) {
-				doneSymbolRanges.push(this.getDoneSymbolRange(task));
+				doneSymbolRanges= doneSymbolRanges.concat(this.getDoneSymbolRange(task));
 				tagsRanges= tagsRanges.concat(task.getTagsRanges());
 				doneActionRanges.push(this.getDoneActionRange(task));
 			}
@@ -102,8 +103,22 @@ class DoneTasksDecorator extends LineDecorator {
 				{decorationType: DoneTasksDecorator.DECORATOR_DONE_ACTION, ranges: doneActionRanges}];
 	}
 
-	private getDoneSymbolRange(doneTask: Task): Range {
-		return super.getRange(TodoDocument.SYMBOL_DONE_TASK, doneTask.taskLine);
+	private getDoneSymbolRange(doneTask: Task): Range[] {
+
+		var rangeMinusTags:Range[]= [];
+		var range:Range = super.getRange(doneTask.taskLine.text, doneTask.taskLine);
+
+		doneTask.getTagsRanges().concat(this.getDoneActionRange(doneTask)).forEach((tagRange:Range) => {
+			if(range.contains(tagRange))
+			{
+				rangeMinusTags.push(new Range(range.start, tagRange.start));
+				range = new Range(tagRange.end, range.end);
+			}
+		});
+		
+		rangeMinusTags.push(range);
+
+		return rangeMinusTags;
 	}
 
 	private getDoneActionRange(doneTask: Task): Range {
@@ -147,7 +162,7 @@ class CancelTasksDecorator extends LineDecorator {
 
 		tasks.forEach((task:Task) => {
 			if (task.isCancelled()) {
-				doneSymbolRanges.push(this.getCancelSymbolRange(task));
+				doneSymbolRanges = doneSymbolRanges.concat(this.getCancelSymbolRange(task));
 				tagsRanges= tagsRanges.concat(task.getTagsRanges());
 				doneActionRanges.push(this.getCancelActionRange(task));
 			}
@@ -158,8 +173,21 @@ class CancelTasksDecorator extends LineDecorator {
 				{decorationType: CancelTasksDecorator.DECORATOR_CANCEL_ACTION, ranges: doneActionRanges}];
 	}
 
-	private getCancelSymbolRange(doneTask: Task): Range {
-		return super.getRange(TodoDocument.SYMBOL_CANCEL_TASK, doneTask.taskLine);
+	private getCancelSymbolRange(doneTask: Task): Range[] {
+		var rangeMinusTags:Range[]= [];
+		var range:Range = super.getRange(doneTask.taskLine.text, doneTask.taskLine);
+
+		doneTask.getTagsRanges().concat(this.getCancelActionRange(doneTask)).forEach((tagRange:Range) => {
+			if(range.contains(tagRange))
+			{
+				rangeMinusTags.push(new Range(range.start, tagRange.start));
+				range = new Range(tagRange.end, range.end);
+			}
+		});
+		
+		rangeMinusTags.push(range);
+
+		return rangeMinusTags;
 	}
 
 	private getCancelActionRange(doneTask: Task): Range {
@@ -189,6 +217,14 @@ class TagsDecorator extends LineDecorator {
 			color: '#000',
 		}
 	});
+	private static DECORATOR_TAG= window.createTextEditorDecorationType({
+		light: {
+			color: '#ccc',
+		},
+		dark: {
+			color: '#7D7D7D',
+		}
+	});
 
 	private static DECORATOR_TODAY_TAG= window.createTextEditorDecorationType({
 		light: {
@@ -206,6 +242,7 @@ class TagsDecorator extends LineDecorator {
 		var highTagRanges:Range[]= []
 		var lowTagRanges:Range[]= []
 		var todayTagRanges:Range[]= []
+
 		tasks.forEach((task:Task) => {
 			if (!task.isCancelled() && !task.isDone()) {
 				criticalTagRanges= criticalTagRanges.concat(task.getTagRanges(TodoDocument.TAG_CRITICAL));

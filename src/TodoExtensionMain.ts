@@ -2,6 +2,7 @@
 
 import { workspace, window, ExtensionContext, TextDocumentChangeEvent, languages, env, commands, TextEditor, TextEditorEdit, Position } from 'vscode';
 import {TodoCommands} from './TodoCommands';
+import {TodoConfiguration} from './TodoConfiguration';
 import TodoCompletionItemProvider from './TodoCompletionItemProvider';
 import TodoDocumentDecorator from './TodoDocumentDecorator';
 import TodoCodeActionProvider from './TodoCodeActionProvider';
@@ -18,6 +19,10 @@ export function activate(context: ExtensionContext): any {
             decreaseIndentPattern: /^\uffff$/ //Does not match any
         }
     });
+
+    let todoConfiguration = new TodoConfiguration();
+    todoConfiguration.updateConfig();
+    workspace.onDidChangeConfiguration(() => todoConfiguration.updateConfig());
 
     let todoCommands= new TodoCommands();
     context.subscriptions.push(todoCommands.registerNewTaskCommand());
