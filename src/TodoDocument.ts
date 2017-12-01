@@ -1,6 +1,7 @@
 'use strict';
 
 import {TextDocument, TextLine, Position, CompletionItem, Range} from 'vscode';
+import {getStatus} from './TodoStatus';
 
 export class TodoDocument {
     
@@ -19,12 +20,15 @@ export class TodoDocument {
     public static ACTION_CANCELLED= "cancelled";
 
     constructor(private _textDocument: TextDocument) {
+        getStatus().reset();
+        let s = this.getTasks();
     }
 
     public getProject(pos: Position): Project {
         let line= this._textDocument.lineAt(pos.line)
         let projectText= line.text.trim();
         if (projectText.endsWith(TodoDocument.SYMBOL_PROJECT)) {
+            getStatus().upProjects();
             return new Project(line);
         }
         return null;
@@ -37,7 +41,11 @@ export class TodoDocument {
         var match;
         while (match = regEx.exec(text)) {
             let line= this._textDocument.lineAt(this._textDocument.positionAt(match.index + 1).line);
-            result.push(new Task(line));
+            let _ = new Task(line);
+            getStatus().upTodo();
+            if(_.isDone())
+                getStatus().upDone();
+            result.push(_);
         }
         return result;
     }

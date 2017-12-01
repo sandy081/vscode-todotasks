@@ -3,6 +3,7 @@
 import { commands, TextEditor, TextEditorEdit, Range, Position, TextLine, TextDocumentChangeEvent } from 'vscode';
 import {TodoDocument} from './TodoDocument';
 import TodoDocumentDecorator from './TodoDocumentDecorator';
+import {getStatus} from './TodoStatus';
 export class TodoDocumentEditor {
     constructor(private _textEditor: TextEditor, private _textEditorEdit: TextEditorEdit) {
     }
@@ -57,6 +58,7 @@ export class TodoDocumentEditor {
         }
 
         this.updateTask(task.taskLine, task.getDescription(), TodoDocument.SYMBOL_CANCEL_TASK, TodoDocument.ACTION_CANCELLED);
+        
     }
 
     private updateTask(taskLine: TextLine, taskDescription: string, symbol: string, tag?: string) {
