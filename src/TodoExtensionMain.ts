@@ -45,7 +45,20 @@ export function activate(context: ExtensionContext): any {
 }
 function updateStatus(status: StatusBarItem):void{
     let a = getStatus();
-    status.text = "Todos: " + a.todo;
+    let asciis = [
+        '[----------]',
+        '[#---------]',
+        '[##--------]',
+        '[###-------]',
+        '[####------]',
+        '[#####-----]',
+        '[######----]',
+        '[#######---]',
+        '[########--]',
+        '[#########-]',
+        '[##########]'
+    ];
+    status.text = asciis[Math.ceil((a.done/a.todo)*10)];
     status.show();
 }
 function _decorateEditor(delayed?:boolean) {

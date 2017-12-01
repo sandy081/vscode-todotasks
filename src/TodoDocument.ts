@@ -22,6 +22,7 @@ export class TodoDocument {
     constructor(private _textDocument: TextDocument) {
         getStatus().reset();
         let s = this.getTasks();
+        let a = getStatus()
     }
 
     public getProject(pos: Position): Project {
