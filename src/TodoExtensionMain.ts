@@ -29,11 +29,20 @@ export function activate(context: ExtensionContext): any {
     context.subscriptions.push(todoCommands.registerCancelTaskCommand());
     context.subscriptions.push(workspace.onDidChangeTextDocument((e: TextDocumentChangeEvent) => {
         _decorateEditor(true);
+        let a = window.activeTextEditor
         new TodoDocument(e.document);
-        updateStatus(status_);
+        let reg_file = /.*\.todo$/mg;
+        if(reg_file.test(e.document.fileName))
+            updateStatus(status_);
+        else
+            status_.hide();
     }));
     context.subscriptions.push(window.onDidChangeActiveTextEditor(e =>{
-        updateStatus(status_);
+        let reg_file = /.*\.todo$/mg;
+        if(reg_file.test(e.document.fileName))
+            updateStatus(status_);
+        else
+            status_.hide();
     }));
 
     window.onDidChangeActiveTextEditor(editor => {
