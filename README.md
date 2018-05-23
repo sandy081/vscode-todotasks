@@ -5,7 +5,7 @@ A simple and handy extension for [Visual Studio Code](http://code.visualstudio.c
 
 ## Install in TWO steps
 * In VSCode press F1 or Cmd+Shift+p (Ctrl+Shift+p on Windows and Linux) to open command pallette
-* Type "Install Extensions" then enter and search for todotasks extension to install.
+* Type "Install Extensions" then enter and search for 'todo tasks' extension to install.
 
 ## How to use
 
