@@ -1,9 +1,11 @@
 # To Do Tasks
+
 A simple and handy extension for [Visual Studio Code](http://code.visualstudio.com/) to organize your to-do tasks.
 
 ![](https://raw.githubusercontent.com/sandy081/vscode-todotasks/master/resources/How%20to%20use%20todos.png)
 
 ## Install in TWO steps
+
 * In VSCode press F1 or Cmd+Shift+p (Ctrl+Shift+p on Windows and Linux) to open command pallette
 * Type "Install Extensions" then enter and search for todotasks extension to install.
 
@@ -13,13 +15,13 @@ Create a new file and save with todo or tasks file extension.
 
 **NOTE:** Commands listed below are triggerred only on files with above extensions.
 
-###Projects:
+### Projects:
 
     * Anything with colon at the end of the line is a project title
     * You can nest projects inside each other
     * You can fold projects and sub projects
 
-###Tasks:
+### Tasks:
     
     New Task:
         * Press Cmd+Enter (Ctrl+Enter on Windows and Linux) to add a new task
@@ -44,6 +46,5 @@ Create a new file and save with todo or tasks file extension.
 More to come... Check [Tasks](todotasks-project.tasks)
 
 ## License
+
 [MIT](LICENSE.md)
-
-
